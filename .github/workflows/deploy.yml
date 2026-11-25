@@ -12,7 +12,12 @@ jobs:
 
     steps:
       - name: Checkout kode terbaru
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
 
       - name: Salin .env ke direktori kerja runner
         run: cp /home/ressa/docker-lab/backend-docker/.env .env
