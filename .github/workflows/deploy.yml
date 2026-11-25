@@ -1,19 +1,21 @@
+
 name: Deploy Backend to Debian VM
+
 on:
   push:
-     branches:
-       - main
+    branches:
+      - main
+
 jobs:
   deploy:
     runs-on: self-hosted
 
     steps:
-       - name: Checkout kode terbaru
-         uses: actions/checkout@v4
+      - name: Checkout kode terbaru
+        uses: actions/checkout@v4
 
-       - name: salin .env ke direktori kerja runner
-         run: cp /home/ressa/docker-lab/backend-docker/.env .env
+      - name: Salin .env ke direktori kerja runner
+        run: cp /home/ressa/docker-lab/backend-docker/.env .env
 
-       - name: Rebuild dan jalankan container
-         run: docker compose up -d --build
-
+      - name: Rebuild dan jalankan container
+        run: docker compose -p backend-docker up -d --build
